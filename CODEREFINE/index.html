@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeRefine - AI Code Review & Optimization</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 CodeRefine</h1>
+            <p>Generative AI Powered Code Review and Optimization Engine</p>
+        </header>
+
+        <main>
+            <section class="input-section">
+                <h2>Input Code</h2>
+                <textarea id="codeInput" placeholder="Paste your code here (any language)..."></textarea>
+                <button id="reviewBtn" class="primary-btn">🔍 Review & Optimize</button>
+            </section>
+
+            <div id="loadingSection" class="loading-section hidden">
+                <div class="spinner"></div>
+                <p>Analyzing your code with AI...</p>
+            </div>
+
+            <section id="resultsSection" class="results-section hidden">
+                <div class="results-header">
+                    <h2>Analysis Results</h2>
+                    <div class="score-container">
+                        <div class="score-circle">
+                            <span id="qualityScore" class="score-value">0</span>
+                            <span class="score-label">Quality Score</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detected-language">
+                    <strong>Detected Language:</strong> <span id="detectedLang">-</span>
+                </div>
+
+                <div class="results-grid">
+                    <div class="result-card">
+                        <h3>📋 Issues Found</h3>
+                        <ul id="issuesList"></ul>
+                    </div>
+
+                    <div class="result-card">
+                        <h3>✨ Optimized Code</h3>
+                        <pre id="optimizedCode"></pre>
+                        <button id="copyBtn" class="copy-btn">📋 Copy</button>
+                    </div>
+
+                    <div class="result-card full-width">
+                        <h3>💡 Beginner-Friendly Explanation</h3>
+                        <div id="explanation"></div>
+                    </div>
+                </div>
+            </section>
+
+            <div id="errorSection" class="error-section hidden">
+                <p id="errorMessage"></p>
+            </div>
+        </main>
+
+        <footer>
+            <p>Powered by Hugging Face & Google Gemini | Built with FastAPI</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
