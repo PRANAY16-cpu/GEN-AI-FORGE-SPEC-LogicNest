@@ -3,71 +3,437 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeRefine - AI Code Review & Optimization</title>
+    <title>CodeRefine - AI-Powered Code Review & Optimization</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>🚀 CodeRefine</h1>
-            <p>Generative AI Powered Code Review and Optimization Engine</p>
-        </header>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                <span>CodeRefine</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#analyzer">Analyzer</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
 
-        <main>
-            <section class="input-section">
-                <h2>Input Code</h2>
-                <textarea id="codeInput" placeholder="Paste your code here (any language)..."></textarea>
-                <button id="reviewBtn" class="primary-btn">🔍 Review & Optimize</button>
-            </section>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">AI-Powered Code Review & Optimization</h1>
+            <p class="hero-subtitle">Analyze, optimize, and refine your code with advanced AI technology</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Languages Supported</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">99%</div>
+                    <div class="stat-label">Bug Detection</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">3x</div>
+                    <div class="stat-label">Faster Development</div>
+                </div>
+            </div>
+            <a href="#analyzer" class="cta-button">Start Analyzing <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="hero-animation">
+            <div class="code-window">
+                <div class="window-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </div>
+                <div class="window-content">
+                    <pre><code id="animatedCode"></code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <div id="loadingSection" class="loading-section hidden">
-                <div class="spinner"></div>
-                <p>Analyzing your code with AI...</p>
+    <section id="features" class="features">
+        <div class="section-header">
+            <h2>Powerful Features</h2>
+            <p>Everything you need to write better code</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bug"></i>
+                </div>
+                <h3>Bug Detection</h3>
+                <p>Automatically identify syntax errors, logical bugs, and potential runtime issues</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-gauge-high"></i>
+                </div>
+                <h3>Performance Analysis</h3>
+                <p>Detect performance bottlenecks and suggest optimizations for faster execution</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+                <h3>Security Audit</h3>
+                <p>Identify security vulnerabilities and compliance issues in your codebase</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h3>Best Practices</h3>
+                <p>Enforce coding standards and industry best practices automatically</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-wand-magic-sparkles"></i>
+                </div>
+                <h3>Code Refactoring</h3>
+                <p>Get AI-generated suggestions for cleaner, more maintainable code</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>Smart Insights</h3>
+                <p>Receive detailed explanations and learning resources for improvements</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="analyzer" class="analyzer">
+        <div class="section-header">
+            <h2>Code Analyzer</h2>
+            <p>Paste your code and let AI do the magic</p>
+        </div>
+        
+        <div class="analyzer-container">
+            <div class="analyzer-controls">
+                <div class="control-group">
+                    <label for="languageSelect">
+                        <i class="fas fa-code"></i> Language
+                    </label>
+                    <select id="languageSelect">
+                        <option value="auto">Auto-detect</option>
+                        <option value="python">Python</option>
+                        <option value="javascript">JavaScript</option>
+                        <option value="typescript">TypeScript</option>
+                        <option value="java">Java</option>
+                        <option value="cpp">C++</option>
+                        <option value="csharp">C#</option>
+                        <option value="go">Go</option>
+                        <option value="rust">Rust</option>
+                        <option value="php">PHP</option>
+                        <option value="ruby">Ruby</option>
+                        <option value="swift">Swift</option>
+                        <option value="kotlin">Kotlin</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="analysisDepth">
+                        <i class="fas fa-sliders"></i> Analysis Depth
+                    </label>
+                    <select id="analysisDepth">
+                        <option value="quick">Quick Scan</option>
+                        <option value="standard" selected>Standard</option>
+                        <option value="deep">Deep Analysis</option>
+                    </select>
+                </div>
+                <div class="control-group checkbox-group">
+                    <label>
+                        <input type="checkbox" id="checkSecurity" checked>
+                        <span>Security Analysis</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="checkPerformance" checked>
+                        <span>Performance Check</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="checkBestPractices" checked>
+                        <span>Best Practices</span>
+                    </label>
+                </div>
             </div>
 
-            <section id="resultsSection" class="results-section hidden">
+            <div class="code-input-section">
+                <div class="input-header">
+                    <h3><i class="fas fa-code"></i> Your Code</h3>
+                    <div class="input-actions">
+                        <button id="pasteBtn" class="icon-btn" title="Paste from clipboard">
+                            <i class="fas fa-clipboard"></i>
+                        </button>
+                        <button id="clearBtn" class="icon-btn" title="Clear code">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                        <button id="uploadBtn" class="icon-btn" title="Upload file">
+                            <i class="fas fa-upload"></i>
+                        </button>
+                        <input type="file" id="fileInput" accept=".py,.js,.java,.cpp,.cs,.go,.rs,.php,.rb,.swift,.kt,.ts" style="display:none">
+                    </div>
+                </div>
+                <div class="code-editor">
+                    <div class="line-numbers" id="lineNumbers"></div>
+                    <textarea id="codeInput" placeholder="Paste your code here or upload a file..."></textarea>
+                </div>
+                <div class="input-footer">
+                    <span class="char-count">0 characters | 0 lines</span>
+                </div>
+            </div>
+
+            <div class="analyze-section">
+                <button id="analyzeBtn" class="analyze-button">
+                    <i class="fas fa-magic"></i>
+                    <span>Analyze Code</span>
+                </button>
+            </div>
+
+            <div id="loadingSection" class="loading-section hidden">
+                <div class="loading-animation">
+                    <div class="spinner-container">
+                        <div class="spinner"></div>
+                        <i class="fas fa-code spinning-icon"></i>
+                    </div>
+                    <p class="loading-text">Analyzing your code with AI...</p>
+                    <div class="loading-steps">
+                        <div class="step active"><i class="fas fa-check"></i> Parsing code</div>
+                        <div class="step"><i class="fas fa-spinner"></i> Detecting issues</div>
+                        <div class="step"><i class="fas fa-spinner"></i> Generating optimizations</div>
+                        <div class="step"><i class="fas fa-spinner"></i> Preparing report</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="resultsSection" class="results-section hidden">
                 <div class="results-header">
-                    <h2>Analysis Results</h2>
-                    <div class="score-container">
-                        <div class="score-circle">
-                            <span id="qualityScore" class="score-value">0</span>
-                            <span class="score-label">Quality Score</span>
+                    <h2><i class="fas fa-chart-line"></i> Analysis Results</h2>
+                    <div class="header-actions">
+                        <button id="exportBtn" class="secondary-btn">
+                            <i class="fas fa-download"></i> Export Report
+                        </button>
+                        <button id="shareBtn" class="secondary-btn">
+                            <i class="fas fa-share-nodes"></i> Share
+                        </button>
+                    </div>
+                </div>
+
+                <div class="score-dashboard">
+                    <div class="score-card main-score">
+                        <div class="score-circle-container">
+                            <svg class="score-ring" viewBox="0 0 120 120">
+                                <circle class="score-ring-bg" cx="60" cy="60" r="54"></circle>
+                                <circle class="score-ring-progress" cx="60" cy="60" r="54" id="scoreRing"></circle>
+                            </svg>
+                            <div class="score-value-container">
+                                <span id="qualityScore" class="score-value">0</span>
+                                <span class="score-max">/100</span>
+                            </div>
+                        </div>
+                        <div class="score-label">Code Quality Score</div>
+                        <div id="scoreGrade" class="score-grade">-</div>
+                    </div>
+
+                    <div class="score-card">
+                        <div class="metric-icon security">
+                            <i class="fas fa-shield-halved"></i>
+                        </div>
+                        <div class="metric-value" id="securityScore">-</div>
+                        <div class="metric-label">Security</div>
+                    </div>
+
+                    <div class="score-card">
+                        <div class="metric-icon performance">
+                            <i class="fas fa-gauge-high"></i>
+                        </div>
+                        <div class="metric-value" id="performanceScore">-</div>
+                        <div class="metric-label">Performance</div>
+                    </div>
+
+                    <div class="score-card">
+                        <div class="metric-icon maintainability">
+                            <i class="fas fa-wrench"></i>
+                        </div>
+                        <div class="metric-value" id="maintainabilityScore">-</div>
+                        <div class="metric-label">Maintainability</div>
+                    </div>
+                </div>
+
+                <div class="metadata-bar">
+                    <div class="metadata-item">
+                        <i class="fas fa-code"></i>
+                        <strong>Language:</strong> <span id="detectedLang">-</span>
+                    </div>
+                    <div class="metadata-item">
+                        <i class="fas fa-file-lines"></i>
+                        <strong>Lines:</strong> <span id="lineCount">-</span>
+                    </div>
+                    <div class="metadata-item">
+                        <i class="fas fa-clock"></i>
+                        <strong>Complexity:</strong> <span id="complexity">-</span>
+                    </div>
+                </div>
+
+                <div class="tabs-container">
+                    <div class="tabs">
+                        <button class="tab-btn active" data-tab="issues">
+                            <i class="fas fa-bug"></i> Issues (<span id="issuesCount">0</span>)
+                        </button>
+                        <button class="tab-btn" data-tab="optimized">
+                            <i class="fas fa-code"></i> Optimized Code
+                        </button>
+                        <button class="tab-btn" data-tab="insights">
+                            <i class="fas fa-lightbulb"></i> Insights
+                        </button>
+                        <button class="tab-btn" data-tab="comparison">
+                            <i class="fas fa-code-compare"></i> Comparison
+                        </button>
+                    </div>
+
+                    <div class="tab-content active" id="issuesTab">
+                        <div class="issues-filter">
+                            <button class="filter-btn active" data-severity="all">All</button>
+                            <button class="filter-btn" data-severity="critical">Critical</button>
+                            <button class="filter-btn" data-severity="warning">Warning</button>
+                            <button class="filter-btn" data-severity="info">Info</button>
+                        </div>
+                        <div id="issuesList" class="issues-list"></div>
+                    </div>
+
+                    <div class="tab-content" id="optimizedTab">
+                        <div class="code-output-header">
+                            <h3>Optimized Code</h3>
+                            <button id="copyOptimizedBtn" class="icon-btn">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <pre class="code-output"><code id="optimizedCode"></code></pre>
+                    </div>
+
+                    <div class="tab-content" id="insightsTab">
+                        <div id="explanation" class="insights-content"></div>
+                    </div>
+
+                    <div class="tab-content" id="comparisonTab">
+                        <div class="comparison-container">
+                            <div class="comparison-side">
+                                <h3>Original Code</h3>
+                                <pre class="code-output"><code id="originalCodeDisplay"></code></pre>
+                            </div>
+                            <div class="comparison-divider">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="comparison-side">
+                                <h3>Optimized Code</h3>
+                                <pre class="code-output"><code id="optimizedCodeDisplay"></code></pre>
+                            </div>
+                        </div>
+                        <div class="comparison-stats">
+                            <div class="stat-box">
+                                <div class="stat-title">Lines Reduced</div>
+                                <div class="stat-value" id="linesReduced">-</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-title">Complexity Reduced</div>
+                                <div class="stat-value" id="complexityReduced">-</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-title">Issues Fixed</div>
+                                <div class="stat-value" id="issuesFixed">-</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="detected-language">
-                    <strong>Detected Language:</strong> <span id="detectedLang">-</span>
-                </div>
-
-                <div class="results-grid">
-                    <div class="result-card">
-                        <h3>📋 Issues Found</h3>
-                        <ul id="issuesList"></ul>
-                    </div>
-
-                    <div class="result-card">
-                        <h3>✨ Optimized Code</h3>
-                        <pre id="optimizedCode"></pre>
-                        <button id="copyBtn" class="copy-btn">📋 Copy</button>
-                    </div>
-
-                    <div class="result-card full-width">
-                        <h3>💡 Beginner-Friendly Explanation</h3>
-                        <div id="explanation"></div>
-                    </div>
-                </div>
-            </section>
+            </div>
 
             <div id="errorSection" class="error-section hidden">
+                <i class="fas fa-exclamation-triangle"></i>
                 <p id="errorMessage"></p>
             </div>
-        </main>
+        </div>
+    </section>
 
-        <footer>
-            <p>Powered by Hugging Face & Google Gemini | Built with FastAPI</p>
-        </footer>
-    </div>
+    <section id="about" class="about">
+        <div class="about-container">
+            <div class="about-content">
+                <h2>About CodeRefine</h2>
+                <p>CodeRefine is an advanced AI-powered code analysis platform that helps developers write better, faster, and more secure code. Using state-of-the-art machine learning models from Hugging Face and Google Gemini, we provide comprehensive code reviews that identify bugs, performance issues, and security vulnerabilities.</p>
+                <div class="tech-stack">
+                    <h3>Powered By</h3>
+                    <div class="tech-icons">
+                        <div class="tech-item">
+                            <i class="fab fa-python"></i>
+                            <span>FastAPI</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-brain"></i>
+                            <span>Hugging Face</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-gem"></i>
+                            <span>Google Gemini</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-js"></i>
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <i class="fas fa-code"></i>
+                    <span>CodeRefine</span>
+                </div>
+                <p>AI-Powered Code Review & Optimization</p>
+            </div>
+            <div class="footer-section">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#analyzer">Analyzer</a></li>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">API</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 CodeRefine. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
